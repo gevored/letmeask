@@ -1,5 +1,5 @@
 
-import {useHistory} from 'react-router-dom'
+import {useHistory, useParams} from 'react-router-dom'
 import  illustrationImg from '../assets/images/illustration.svg'
 import  logoImg from '../assets/images/logo.svg'
 import  googleIconImg from '../assets/images/google-icon.svg'
@@ -13,9 +13,12 @@ import { database } from '../services/firebase'
 
 export function Home(){
 
+
+      
     const history = useHistory()
     const {user , signWithGoogle} = useAuth()
     const [roomCode, setRoomCode] = useState('')
+   
 
     async function handleCreateRoom(){ 
 
@@ -40,7 +43,7 @@ export function Home(){
             return;
           }
       
-          if (roomRef.val().endedAt) {
+          if (roomRef.val().endedAt ) {
             alert('Room already closed.');
             return;
           }

@@ -9,7 +9,7 @@ type User = {
 
 type AuthContextType = {
   user: User | undefined;
-  signInWithGoogle: () => Promise<void>;
+  signWithGoogle: () => Promise<void>;
 }
 
 type AuthContextProviderProps = {
@@ -43,7 +43,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
     }
   }, [])
 
-  async function signInWithGoogle() {
+  async function signWithGoogle() {
     const provider = new firebase.auth.GoogleAuthProvider();
 
     const result = await auth.signInWithPopup(provider);
@@ -64,7 +64,7 @@ export function AuthContextProvider(props: AuthContextProviderProps) {
   }
   
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle }}>
+    <AuthContext.Provider value={{ user, signWithGoogle }}>
       {props.children}
     </AuthContext.Provider>
   );
