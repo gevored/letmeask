@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-
+import cx from 'classnames';
 
 import '../style/question.scss';
 
@@ -23,8 +23,11 @@ export function Question({
 }: QuestionProps) {
   return (
     <div 
-      className=
-        'question'
+    className={cx(
+      'question', 
+      { answered: isAnswered },
+      { highlighted: isHighlighted && !isAnswered },
+    )}
     >
       <p>{content}</p>
       <footer>
